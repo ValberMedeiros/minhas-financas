@@ -1,4 +1,4 @@
-package model.entity;
+package valber.medeiros.com.minhasfinancas.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
