@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
-import valber.medeiros.com.minhasfinancas.model.entity.enums.StatusLancamento;
-import valber.medeiros.com.minhasfinancas.model.entity.enums.TipoLancamento;
+import valber.medeiros.com.minhasfinancas.model.enums.StatusLancamento;
+import valber.medeiros.com.minhasfinancas.model.enums.TipoLancamento;
 
 import javax.persistence.Convert;
 import javax.persistence.Entity;
