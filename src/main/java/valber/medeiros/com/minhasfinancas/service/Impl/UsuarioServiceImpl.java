@@ -2,10 +2,13 @@ package valber.medeiros.com.minhasfinancas.service.Impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import valber.medeiros.com.minhasfinancas.exepction.ErroAutenticacaoException;
 import valber.medeiros.com.minhasfinancas.exepction.RegraNegocioException;
 import valber.medeiros.com.minhasfinancas.model.entity.Usuario;
 import valber.medeiros.com.minhasfinancas.model.repository.UsuarioRepository;
 import valber.medeiros.com.minhasfinancas.service.UsuarioService;
+
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -18,7 +21,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario autenticar(String email, String senha) {
-        return null;
+        Optional<Usuario> usuarioOptional = repository.findByEmail(email);
+
+        if (!usuarioOptional.isPresent()) {
+            throw new ErroAutenticacaoException("Usuário não encontrado para o email informado.");
+        }
+
+        var usuario = usuarioOptional.get();
+        if (!usuario.getSenha().equals(senha)) {
+            throw new ErroAutenticacaoException("Senha inválida.");
+        }
+
+        return usuario;
     }
 
     @Override
