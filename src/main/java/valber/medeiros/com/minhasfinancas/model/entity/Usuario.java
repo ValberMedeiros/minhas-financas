@@ -14,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuario", schema = "minhasfinancas")
+@Table(name = "usuario", schema = "financas")
 @Getter
 @Setter
 @NoArgsConstructor
