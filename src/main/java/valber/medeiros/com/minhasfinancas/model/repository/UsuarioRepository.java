@@ -6,4 +6,7 @@ import valber.medeiros.com.minhasfinancas.model.entity.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+
+    boolean existsByEmail(String email);
+
 }
