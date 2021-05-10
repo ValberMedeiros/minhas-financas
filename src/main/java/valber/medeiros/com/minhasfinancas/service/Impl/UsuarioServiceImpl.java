@@ -1,6 +1,7 @@
 package valber.medeiros.com.minhasfinancas.service.Impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import valber.medeiros.com.minhasfinancas.exepction.RegraNegocioException;
 import valber.medeiros.com.minhasfinancas.model.entity.Usuario;
 import valber.medeiros.com.minhasfinancas.model.repository.UsuarioRepository;
@@ -21,8 +22,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    @Transactional
     public Usuario salvarUsuario(Usuario usuario) {
-        return null;
+        this.validarEmail(usuario.getEmail());
+        return repository.save(usuario);
     }
 
     @Override
